@@ -1,67 +1,67 @@
-const sliderNext = document.getElementsByClassName('slider__arrow_next');
+const SLIDER_NEXT = document.getElementsByClassName('slider__arrow_next');
 
-const sliderPrev = document.getElementsByClassName('slider__arrow_prev');
+const SLIDER_PREV = document.getElementsByClassName('slider__arrow_prev');
 
-const items = Array.from(document.querySelectorAll(".slider__items .slider__item"));
+const ITEMS = Array.from(document.querySelectorAll(".slider__items .slider__item"));
 
-const dots = Array.from(document.querySelectorAll(".slider__dots .slider__dot"));
+const DOTS = Array.from(document.querySelectorAll(".slider__dots .slider__dot"));
 
-const b = "slider__item_active";
+const B = "slider__item_active";
 
-const c = "slider__dot_active";
+const C = "slider__dot_active";
 
-dots.forEach(element => element.onclick = () => {
+DOTS.forEach(element => element.onclick = () => {
     
-    dots.forEach(element => element.classList.remove(c))
+    DOTS.forEach(element => element.classList.remove(C))
     
-    element.classList.add(c);
+    element.classList.add(C);
     
-    dotIndex = dots.findIndex(element => element.classList.contains(c));
+    dotIndex = DOTS.findIndex(element => element.classList.contains(C));
 
-    items.forEach(element => element.classList.remove(b))
+    ITEMS.forEach(element => element.classList.remove(B))
 
-    items[dotIndex].classList.add(b);
+    ITEMS[dotIndex].classList.add(B);
 });
 
 function previousSlide() {
-    let number = items.findIndex(el => el.classList.contains(b));
+    let number = ITEMS.findIndex(el => el.classList.contains(B));
     
     let nextNumber = number - 1;; 
     
     if (nextNumber < 0) {
-        nextNumber = items.length - 1;
+        nextNumber = ITEMS.length - 1;
     }
     
-    items[number].classList.remove(b);
+    ITEMS[number].classList.remove(B);
     
-    items[nextNumber].classList.add(b);
+    ITEMS[nextNumber].classList.add(B);
 
-    dots.forEach(element => element.classList.remove(c))
+    DOTS.forEach(element => element.classList.remove(C))
 
-    dots[nextNumber].classList.add(c)
+    DOTS[nextNumber].classList.add(C)
 }
 
 function nextSlide() {
-    let number = items.findIndex(el => el.classList.contains(b));
+    let number = ITEMS.findIndex(el => el.classList.contains(B));
     let nextNumber = number + 1;; 
     
-    if (nextNumber === items.length) {
+    if (nextNumber === ITEMS.length) {
         nextNumber = 0;
     }
 
-    items[number].classList.remove(b);
+    ITEMS[number].classList.remove(B);
 
-    items[nextNumber].classList.add(b);
+    ITEMS[nextNumber].classList.add(B);
 
-    dots.forEach(element => element.classList.remove(c))
+    DOTS.forEach(element => element.classList.remove(C))
 
-    dots[nextNumber].classList.add(c)
+    DOTS[nextNumber].classList.add(C)
 }
 
-Array.from(sliderPrev).forEach(element => element.onclick = () => {
+Array.from(SLIDER_PREV).forEach(element => element.onclick = () => {
     previousSlide()
 })
 
-Array.from(sliderNext).forEach(element => element.onclick = () => {
+Array.from(SLIDER_NEXT).forEach(element => element.onclick = () => {
     nextSlide()
 })

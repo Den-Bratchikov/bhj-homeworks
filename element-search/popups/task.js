@@ -1,28 +1,24 @@
-const showMain = document.getElementById('modal_main');
+const SHOW_MAIN = document.getElementById('modal_main');
 
-const wellDone = document.getElementById('modal_success');
+const WELL_DONE = document.getElementById('modal_success');
 
-const doWell = document.querySelector('.btn_danger');
+const DO_WELL = document.querySelector('.btn_danger');
 
-const Cross =  Array.from(document.getElementsByClassName('modal__close_times'));
+const CROSS =  Array.from(document.getElementsByClassName('modal__close_times'));
 
-const CloseWindowArr = Array.from(document.getElementsByClassName('modal_active'))
-
-const CloseWindow = document.getElementsByClassName('modal_active')
-
-let 
+const CLOSE_WINDOW = document.getElementsByClassName('modal_active')
 
 showPopUp = () => {
-    showMain.classList.add("modal_active");
+    SHOW_MAIN.classList.add("modal_active");
 }
 
 showPopUp()
 
-doWell.onclick = () => {
-    showMain.classList.remove("modal_active");
-    wellDone.classList.add("modal_active");
+DO_WELL.onclick = () => {
+    SHOW_MAIN.classList.remove("modal_active");
+    WELL_DONE.classList.add("modal_active");
 }
 
-Cross.forEach(element => element.onclick = () => {
-    CloseWindow[0].remove("modal_active")
+CROSS.forEach(element => element.onclick = () => {
+    CLOSE_WINDOW[0].remove("modal_active")
 })
